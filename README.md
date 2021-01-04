@@ -1,2 +1,3 @@
 # Event-calendar
-The Project displays the list of events for different companies
+The project mainly displays list of events for different companies.
+It is developed on MEAN stack
