@@ -1,0 +1,55 @@
+<div class="users-list">
+  <div class="section-heading">
+    <span>All Users List</span>
+  </div>
+  <div class="user-list-table">
+    <div class="list-heading">
+      <div class="heading-text">
+        <h3>First Name</h3>
+      </div>
+      <div class="heading-text">
+        <h3>Last Name</h3>
+      </div>
+      <div class="heading-text">
+        <h3>Email Id</h3>
+      </div>
+      <div class="heading-text">
+        <h3>User Type</h3>
+      </div>
+      <div class="heading-text">
+        <h3>Actions</h3>
+      </div>
+    </div>
+    <div class="user-list-data">
+      <div class="users-info" *ngFor="let user of users">
+        <div class="info-field">
+          <span>{{user.firstname}}</span>
+        </div>
+        <div class="info-field">
+          <span>{{user.lastname}}</span>
+        </div>
+        <div class="info-field">
+          <span>{{user.email}}</span>
+        </div>
+        <div class="info-field">
+          <span>{{user.usertype}}</span>
+        </div>
+        <div class="info-field">
+          <div class="action-buttons">
+            <a class="view" [routerLink]="['/users', user._id]">View</a>
+            <a class="edit" [routerLink]="['/create-user', user._id]">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+  </div>
+  <div *ngIf="totalRecords">
+    <app-pagination
+      [pageUrl]="pageUrl"
+      [currentPage]="currentPage"
+      [totalRecords]="totalRecords"
+      [recordsPerPage]="recordsPerPage">
+    </app-pagination>
+  </div>
+</div>

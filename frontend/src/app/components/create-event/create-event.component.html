@@ -1,0 +1,107 @@
+<div class="event-form">
+  <div class="heading">
+    <h2>Create Event Form</h2>
+  </div>
+  <form [formGroup]="createEventForm" method="post" enctype="multipart/form-data" class="create-form">
+    <div class="form-input">
+      <div class="input-field">
+        <label>Event Name: </label>
+        <input type="text" formControlName="eventName" #eventName [appInputLimit]="eventName" />
+        <div *ngIf="createEventForm.controls['eventName'].errors && (submitted ||
+            !createEventForm.controls['eventName'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['eventName'].errors.required">Event Name is Required.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Contact Email: </label>
+        <input type="text" formControlName="eventEmail" #eventEmail />
+        <div *ngIf="createEventForm.controls['eventEmail'].errors && (submitted ||
+            !createEventForm.controls['eventEmail'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['eventEmail'].errors.required">Email is Required.</p>
+          <p [hidden]="!createEventForm.controls['eventEmail'].errors.patternInvalid">Email is invalid.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Select Company: </label>
+        <select formControlName="companyName" #companyName>
+          <option *ngFor="let company of companyNames" [value]="company.companyName" selected="">{{company.companyName}}</option>
+        </select>
+        <div *ngIf="createEventForm.controls['companyName'].errors && (submitted ||
+            !createEventForm.controls['companyName'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['companyName'].errors.required">Please select company.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Event Image: </label>
+        <input (change)="fileChange($event)" type="file" id="inputGroupFile01"
+          aria-describedby="inputGroupFileAddon01" formControlName="eventImage" #eventImage>
+        <div *ngIf="createEventForm.controls['eventImage'].errors && (submitted ||
+            !createEventForm.controls['eventImage'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['eventImage'].errors.required">Please add event image.</p>
+          <p [hidden]="!createEventForm.controls['eventImage'].errors.requiredFileType">Image type should be *.png or
+            *.jpg</p>
+        </div>
+      </div>
+      <div class="input-field textarea">
+        <label>Event Description: </label>
+        <textarea type="text" rows="4" formControlName="eventDesc" #eventDesc></textarea>
+        <div *ngIf="createEventForm.controls['eventDesc'].errors && (submitted ||
+            !createEventForm.controls['eventDesc'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['eventDesc'].errors.required">Please add event description.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Start Time: </label>
+        <input [owlDateTime]="startTime" [owlDateTimeTrigger]="startTime" placeholder="Select Event Start Time"
+          [min]="today" [max]="maxStartDate" formControlName="startDate" (click)="startDateClick()" #startDate
+          readonly="true" />
+        <owl-date-time #startTime hour12Timer="true"></owl-date-time>
+        <div *ngIf="createEventForm.controls['startDate'].errors && (submitted ||
+            !createEventForm.controls['startDate'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['startDate'].errors.required">Please select event start date.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>End Time: </label>
+        <input [owlDateTime]="endTime" [owlDateTimeTrigger]="endTime" placeholder="Select Event End Time"
+          [min]="minEndDate" readonly="true" formControlName="endDate" (click)="endDateClick()" #endDate />
+        <owl-date-time #endTime hour12Timer="true"></owl-date-time>
+        <div *ngIf="createEventForm.controls['endDate'].errors && (submitted ||
+            !createEventForm.controls['endDate'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['endDate'].errors.required">Please select event end date.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Address: </label>
+        <input type="text" formControlName="address" #address />
+        <div *ngIf="createEventForm.controls['address'].errors && (submitted ||
+            !createEventForm.controls['address'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['address'].errors.required">Please add event Location.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>City: </label>
+        <input type="text" formControlName="city" #city />
+        <div *ngIf="createEventForm.controls['city'].errors && (submitted ||
+            !createEventForm.controls['city'].pristine)" class="error-msg">
+          <p [hidden]="!createEventForm.controls['city'].errors.required">Please add City name.</p>
+        </div>
+      </div>
+      <div class="input-field radio-field">
+        <label>Event Type: </label>
+        <div class="radio" *ngIf="eventType">
+          <div class="radio-option" *ngFor="let eventtype of eventType">
+            <input type="radio" placeholder="" value="{{eventtype}}" formControlName="eventType" #eventType />
+            <span>{{eventtype}}</span>
+          </div>
+        </div>
+        <div
+          *ngIf="createEventForm.controls['eventType'].errors && (submitted || !createEventForm.controls['eventType'].pristine)"
+          class="error-msg">
+          <p [hidden]="!createEventForm.controls['eventType'].errors.required">Please select Event Type.</p>
+        </div>
+      </div>
+    </div>
+    <button class="button" type="submit" (click)="SubmitEvent()">Submit</button>
+  </form>
+</div>

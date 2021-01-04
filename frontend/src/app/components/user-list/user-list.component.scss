@@ -1,0 +1,50 @@
+.users-list {
+  width: 95%;
+  margin: 50px auto;
+  .list-heading,
+  .user-list-data .users-info {
+    display: flex;
+  }
+}
+.list-heading {
+  border-bottom: 2px solid #dedede;
+  .heading-text {
+    width: 22%;
+    padding: 15px 8px;
+    h3 {
+      font-weight: 400;
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+  }
+}
+.users-info .info-field {
+  width: 22%;
+}
+
+.list-heading .heading-text:last-child, .users-info .info-field:last-child {
+  width: 12%;
+}
+.user-list-table {
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+
+.user-list-data {
+  padding-top: 10px;
+  .users-info {
+    border-bottom: 1px solid #f1f1f1;
+    &:last-child {
+      border: none;
+    }
+  }
+  .info-field {
+    padding: 15px 8px;
+    span {
+      font-size: 14px;
+      color: #787878;
+    }
+  }
+}

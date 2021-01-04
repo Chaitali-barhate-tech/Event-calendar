@@ -1,0 +1,25 @@
+<div class="login-block">
+  <div class="heading">
+    <span>Log In</span>
+  </div>
+  <form [formGroup]="loginForm" class="create-form">
+    <div class="error-msg" *ngIf="loginError">
+      <span>Username or password is incorrect.</span>
+    </div>
+    <div class="form-input">
+      <div class="input-field">
+        <label>Username: </label>
+        <input type="text" #loginEmail placeholder="Please enter your Email Id" formControlName="email" #email />
+      </div>
+      <div class="input-field">
+        <label>Password: </label>
+        <input type="password" placeholder="Please enter your password" formControlName="password" #password />
+      </div>
+    </div>
+    <button type="submit" class="button" (click)="login(email.value, password.value)">Login</button>
+  </form>
+  <div class="forgot-password">
+    <a routerLink="/">Forgot Username / Password</a>
+  </div>
+</div>
+

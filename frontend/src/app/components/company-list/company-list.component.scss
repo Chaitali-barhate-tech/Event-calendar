@@ -1,0 +1,97 @@
+.company-logo {
+  text-align: center;
+  img {
+    max-width: 150px;
+    max-height: 70px;
+  }
+}
+
+.company-list-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.company-list {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .company-info {
+    width: 22%;
+    padding: 35px 20px 80px;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+    margin-right: 3%;
+    box-shadow: 0 0 10px #eee;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: relative;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    label {
+      color: #222;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .company-type {
+      ul {
+        padding: 6px 0 0 35px;
+        margin: 0;
+        li {
+          color: #555;
+        }
+      }
+      span {
+        font-size: 14px;
+        line-height: 21px;
+        color: #555;
+      }
+    }
+
+    .company-name {
+      padding: 15px 0;
+      h3 {
+        color: #109840;
+        margin: 0;
+        text-shadow: none;
+      }
+    }
+    .company-email {
+      padding: 20px 0 0;
+      span {
+        font-size: 14px;
+        line-height: 21px;
+        color: #044ed6;
+      }
+    }
+  }
+}
+
+.create-event {
+  width: 90%;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  a {
+    display: block;
+    min-width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    color: #ce4c00;
+    border: 1px solid #ce4c00;
+    &:hover {
+      background: #ffeace;
+      text-decoration: none;
+    }
+  }
+}

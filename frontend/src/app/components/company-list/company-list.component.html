@@ -1,0 +1,32 @@
+<div class="company-list-container">
+  <div class="section-heading">
+    <span>All Companies</span>
+  </div>
+  <div class="company-list">
+    <div class="company-info" *ngFor="let company of companyList">
+      <div class="company-logo">
+        <img src="http://localhost:3000/file/{{company.companyLogo}}" />
+      </div>
+      <div class="company-details">
+        <div class="company-name">
+          <h3>{{company.companyName}}</h3>
+        </div>
+        <div class="company-type">
+          <label>Company Type: </label>
+          <ul>
+            <li *ngFor="let type of company.companyType">
+              <span>{{type}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="company-email">
+          <label>Email: </label>
+          <span>{{company.companyEmail}}</span>
+        </div>
+        <div class="create-event">
+          <a [routerLink]="['/create-event/',{company: company.companyName}]">Create Event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

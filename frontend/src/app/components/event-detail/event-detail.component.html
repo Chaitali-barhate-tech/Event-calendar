@@ -1,0 +1,70 @@
+<div class="event-details" *ngIf="eventInfo">
+  <div class="event-type">
+    <span>{{eventInfo.eventType}}</span>
+  </div>
+  <h3>{{eventInfo.eventName}}</h3>
+  <div class="event-image">
+    <img src="http://localhost:3000/file/{{eventInfo.eventImage}}" />
+  </div>
+  <div class="event-info">
+    <div class="description">
+      <p>{{eventInfo.eventDesc}}</p>
+    </div>
+
+    <div class="section venue">
+      <div class="title">
+        <span>Venue: </span>
+      </div>
+      <div class="address">
+        <p>
+          <fa name="map-marker" class="icon"></fa> {{eventInfo.address}}, {{eventInfo.city}}
+        </p>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="section date-info">
+        <div class="title">
+          <span>Date: </span>
+        </div>
+        <div class="date">
+          <p>
+            <fa name="calendar" class="icon"></fa> {{eventInfo.startDate | date : 'MMM dd, yyyy'}}
+          </p>
+        </div>
+      </div>
+      <div class="section time-info">
+        <div class="title">
+          <span>Time: </span>
+        </div>
+        <div class="time">
+          <p>
+            <fa name="clock-o" class="icon"></fa> {{eventInfo.startDate | date : 'shortTime'}} -
+            {{eventInfo.endDate | date : 'shortTime'}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="section company-info">
+        <div class="title">
+          <span>Organized by: </span>
+        </div>
+        <div class="company">
+          <p>
+            <fa name="briefcase" class="icon"></fa> {{eventInfo.companyName}}
+          </p>
+        </div>
+      </div>
+      <div class="section contact-info">
+        <div class="title">
+          <span>Contact Email: </span>
+        </div>
+        <div class="email">
+          <p>
+            <fa name="envelope" class="icon"></fa> {{eventInfo.contactEmail}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

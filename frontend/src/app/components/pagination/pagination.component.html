@@ -1,0 +1,17 @@
+<div *ngIf="pageUrl" class="pagination">
+  <div *ngIf="current > 1" class="page previous">
+    <a [routerLink]="[pageUrl, prev]" (click)="changePageNumber(prev)"><span
+        class="arrow">&laquo;</span><span
+        class="text">Prev</span></a>
+  </div>
+  <div class="page" *ngFor="let page of PageArr"
+    [ngClass]="{'active': page == current, 'first': page == 1, 'last': page == PageArr[PageArr.length-1]}">
+    <a [routerLink]="[pageUrl, page]" *ngIf="!checkNumber(page)"
+      (click)="changePageNumber(page)">{{page}}</a>
+      <span *ngIf="checkNumber(page)">{{page}}</span>
+  </div>
+  <div *ngIf="current < pageCount" class="page next">
+    <a [routerLink]="[pageUrl, next]" (click)="changePageNumber(next)"><span class="text">Next</span>
+      <span class="arrow">&raquo;</span></a>
+  </div>
+</div>

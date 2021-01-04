@@ -1,0 +1,48 @@
+<div class="form">
+  <div class="heading">
+    <h2>{{formStatus}} Company</h2>
+  </div>
+  <form [formGroup]="createCompanyForm" action="/create-company" method="post" enctype="multipart/form-data"
+    class="create-form">
+    <div class="form-input">
+      <div class="input-field">
+        <input type="text" placeholder="Company Name" formControlName="companyName" #companyName />
+        <div *ngIf="createCompanyForm.controls['companyName'].errors && (submitted ||
+            !createCompanyForm.controls['companyName'].pristine)" class="error-msg">
+          <p [hidden]="!createCompanyForm.controls['companyName'].errors.required">Company Name is Required.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <input type="text" placeholder="Company Email" formControlName="companyEmail" #companyEmail />
+        <div *ngIf="createCompanyForm.controls['companyEmail'].errors && (submitted ||
+            !createCompanyForm.controls['companyEmail'].pristine)" class="error-msg">
+          <p [hidden]="!createCompanyForm.controls['companyEmail'].errors.required">Email is Required.</p>
+          <p [hidden]="!createCompanyForm.controls['companyEmail'].errors.patternInvalid">Email is invalid.</p>
+        </div>
+      </div>
+      <div class="input-field">
+        <label>Company Logo:</label>
+        <input (change)="fileChange($event)" type="file" id="inputGroupFile01"
+          aria-describedby="inputGroupFileAddon01" formControlName="logo" #logo>
+          <div *ngIf="createCompanyForm.controls['logo'].errors && (submitted ||
+            !createCompanyForm.controls['logo'].pristine)" class="error-msg">
+            <p [hidden]="!createCompanyForm.controls['logo'].errors.required">Please add event image.</p>
+            <p [hidden]="!createCompanyForm.controls['logo'].errors.requiredFileType">Image type should be *.png only</p>
+          </div>
+      </div>
+      <div class="input-field">
+        <label>Sector: </label>
+        <div class="checkbox" formArrayName="sector">
+          <div class="company-type-checkbox" *ngFor="let companyType of companyTypeList; let idx=index">
+            <label class="checkbox-container"><span>{{companyType.type}}</span>
+              <input type="checkbox" [value]="companyType.type" (change)="getCheckBoxvalue(companyType.type)"
+                [formControlName]="idx" />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button" type="submit" (click)="SubmitCompanyData()">Submit</button>
+  </form>
+</div>

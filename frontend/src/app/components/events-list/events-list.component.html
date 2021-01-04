@@ -1,0 +1,73 @@
+<div class="events-list list-view">
+  <div class="tabs-list">
+    <div class="tab" [ngClass]="{active: showUpcomingEvents}" (click)="changeTabs('upcoming')">
+      <span>Upcoming Events</span>
+    </div>
+    <div class="tab" [ngClass]="{active: !showUpcomingEvents}" (click)="changeTabs('previous')">
+      <span>Previous Events</span>
+    </div>
+  </div>
+  <div *ngIf="showUpcomingEvents" class="upcoming-events">
+    <div *ngIf="noUpcomingEvents" class="no-results">
+      <span>No results found...</span>
+    </div>
+    <ul *ngIf="!noUpcomingEvents">
+      <li *ngFor="let event of upcomingEvents">
+        <div class="event">
+          <div class="image">
+            <img src="http://localhost:3000/file/{{event.eventImage}}" />
+          </div>
+          <div class="event-info">
+            <div class="event-type">
+              <span>{{event.eventType}}</span>
+            </div>
+            <h3>{{event.eventName}}</h3>
+            <div class="date-time">
+              <p>{{event.startDate | date : 'MMM dd, yyyy'}} | {{event.startDate | date : 'shortTime'}} -
+                {{event.endDate | date : 'shortTime'}}</p>
+            </div>
+            <div class="description">
+              <p>{{event.eventDesc | ellipsis:130}}</p>
+            </div>
+            <div class="know-more">
+              <a [routerLink]="['/events', event._id]"
+                routerLinkActive="router-link-active">Know More
+                <span>&#10095;&#10095;</span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!showUpcomingEvents" class="archived-events">
+    <div *ngIf="noArchivedEvents" class="no-results">
+      <span>No results found...</span>
+    </div>
+    <ul *ngIf="!noArchivedEvents">
+      <li *ngFor="let event of archivedEvents">
+        <div class="event">
+          <div class="image">
+            <img src="http://localhost:3000/file/{{event.eventImage}}" />
+          </div>
+          <div class="event-info">
+            <div class="event-type">
+              <span>{{event.eventType}}</span>
+            </div>
+            <h3>{{event.eventName}}</h3>
+            <div class="date-time">
+              <p>{{event.startDate | date : 'MMM dd, yyyy'}} | {{event.startDate | date : 'shortTime'}} -
+                {{event.endDate | date : 'shortTime'}}</p>
+            </div>
+            <div class="description">
+              <p>{{event.eventDesc | ellipsis:130}}</p>
+            </div>
+            <div class="know-more">
+              <a [routerLink]="['/events', event._id]" routerLinkActive="router-link-active">Know More
+                <span>&#10095;&#10095;</span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

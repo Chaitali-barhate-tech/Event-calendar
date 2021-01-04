@@ -1,0 +1,33 @@
+.login-block {
+  width: 400px;
+  margin: 70px auto 30px;
+  text-align: center;
+  border: 1px solid #198e89;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .heading {
+    background: linear-gradient(to right, #24ba7b, #1cad92, #33779f);
+    color: #fff;
+    padding: 15px;
+    font-size: 24px;
+
+    span {
+      display: inline-block;
+      line-height: 28px;
+    }
+  }
+  .forgot-password {
+    margin-bottom: 50px;
+    a {
+      color: #078e7b;
+      font-size: 14px;
+      text-decoration: underline;
+      letter-spacing: 0.3px;
+    }
+  }
+  .create-form .error-msg {
+    position: static;
+    margin-bottom: 10px;
+  }
+}

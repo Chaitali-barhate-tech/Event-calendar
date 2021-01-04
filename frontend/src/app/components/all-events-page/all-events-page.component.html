@@ -1,0 +1,33 @@
+<div class="all-events">
+  <div class="events-list-header">
+    <div class="section-container">
+      <div class="show-all-events">
+        <button (click)="showAllEvents()">Show All Events</button>
+      </div>
+      <div class="search-events">
+        <form [formGroup]="searchEventForm">
+          <input type="text" class="search-input" placeholder="search events" formControlName="searchText" #searchText
+            (input)="onSearchChange($event.target.value)" />
+          <input type="submit" class="submit" value="Search" (click)="search(searchEventForm.value.searchText)" />
+        </form>
+        <div class="search-suggestions" *ngIf="showSuggestions">
+          <ul>
+            <li *ngFor="let eventName of eventSuggestions">
+              <a [routerLink]="['/events', eventName._id]" routerLinkActive="router-link-active">{{eventName}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="filter-events">
+        <form [formGroup]="eventfilterForm">
+          <select formControlName="filterType" placeholder="Filter Events by Type" #filterType
+            (change)="filterEvent(eventfilterForm.value.filterType)">
+            <option *ngFor="let eventtype of eventTypes" [value]="eventtype._id">{{eventtype._id}} [{{eventtype.count}}]
+            </option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-events-list [eventsList]="allEvents"></app-events-list>
+</div>

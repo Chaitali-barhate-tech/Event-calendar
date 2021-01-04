@@ -1,0 +1,5 @@
+<app-header *ngIf="getUser()"></app-header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<app-footer *ngIf="getUser()"></app-footer>

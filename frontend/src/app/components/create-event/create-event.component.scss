@@ -1,0 +1,26 @@
+.event-form {
+  width: 70%;
+  margin: 40px auto 50px;
+  text-align: center;
+  .form-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .input-field {
+      width: 48%;
+      &.radio-field {
+        width: 100%;
+        .radio-option {
+          width: 25%;
+          margin-right: 0;
+          padding: 4px;
+          box-sizing: border-box;
+        }
+      }
+      &.textarea {
+        width: 100%;
+      }
+    }
+
+  }
+}

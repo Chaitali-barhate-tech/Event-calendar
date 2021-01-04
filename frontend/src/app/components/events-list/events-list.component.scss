@@ -1,0 +1,152 @@
+.events-list {
+  width: 90%;
+  margin: 30px auto 20px;
+
+  ul {
+    margin: 0;
+    padding: 35px 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      list-style-type: none;
+      width: 31%;
+      margin-bottom: 50px;
+      margin-right: 3.5%;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.events-list li {
+  .image img {
+    width: 100%;
+    max-height: 200px;
+  }
+}
+
+.event {
+  position: relative;
+
+  .event-info {
+    padding: 8px;
+  }
+
+  .event-type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    background: #168456;
+    color: #fff;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+  }
+
+  h3 {
+    // font-family: 'Lobster', cursive;
+    font-weight: 400;
+    color: #e08c0e;
+    margin: 0;
+  }
+
+  .date-time {
+    font-size: 14px;
+    line-height: 20px;
+    color: #888;
+    padding: 5px 0 15px;
+  }
+
+  .description {
+    font-size: 15px;
+    color: #333;
+  }
+
+  .know-more {
+    margin-top: 20px;
+    text-align: right;
+
+    a {
+      padding: 4px 10px;
+      color: #2b81b3;
+      font-size: 15px;
+
+      span {
+        font-size: 12px;
+        padding-left: 2px;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #115780;
+      }
+    }
+  }
+}
+
+.tabs-list {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+
+  .tab {
+    padding: 10px 30px;
+    cursor: pointer;
+    border: 1px solid #2b81b3;
+    color: #2b81b3;
+    border-radius: 0 25px 25px 0;
+
+    &:first-child {
+      border-right: none;
+      border-radius: 25px 0 0 25px;
+    }
+
+    &.active {
+      color: #fff;
+      background: #2b81b3;
+    }
+  }
+}
+
+.events-list.list-view {
+  .event {
+     padding: 20px;
+     border: 1px solid #ddd;
+     border-radius: 15px;
+     box-shadow: 0 0 5px #ccc;
+  }
+  ul {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+
+    li {
+      width: 100%;
+
+      .event {
+        display: flex;
+
+        .image {
+          width: 36%;
+        }
+
+        .event-info {
+          width: 64%;
+          padding: 0 0 0 30px;
+        }
+
+        .event-type {
+          position: static;
+          display: inline-block;
+          background: #666;
+          padding: 2px 7px;
+          margin-bottom: 8px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}

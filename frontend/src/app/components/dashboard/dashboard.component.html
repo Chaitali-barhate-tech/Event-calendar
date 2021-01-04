@@ -1,0 +1,46 @@
+<div class="dashboard">
+  <div class="section-container">
+    <div class="section-heading">
+      <span>All Company Events</span>
+    </div>
+    <div class="company-events" *ngFor="let company of companyEvents">
+      <div class="company-name">
+        <h2>{{company._id}} <span> [ {{company.count}} ]</span></h2>
+      </div>
+      <div class="event heading">
+        <div class="event-name">
+          <span>Event Name</span>
+        </div>
+        <div class="event-type">
+          <span>Event Type</span>
+        </div>
+        <div class="event-date">
+          <span>Event Date</span>
+        </div>
+        <div class="event-time">
+          <span>Event Time</span>
+        </div>
+        <div class="address">
+          <span>Address</span>
+        </div>
+      </div>
+      <div class="event" *ngFor="let event of company.events">
+        <div class="event-name">
+          <a [routerLink]="['/events/', event._id]" routerLinkActive="router-link-active">{{event.eventName}}</a>
+        </div>
+        <div class="event-type">
+          <span>{{event.eventType}}</span>
+        </div>
+        <div class="event-date">
+          <span>{{event.startDate | date : 'MMM dd, yyyy'}}</span>
+        </div>
+        <div class="event-time">
+          <span>{{event.startDate | date : 'shortTime'}} - {{event.endDate | date : 'shortTime'}}</span>
+        </div>
+        <div class="address">
+          <span>{{event.address}}, {{event.city}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
